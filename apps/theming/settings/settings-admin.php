@@ -46,6 +46,10 @@ $template->assign('name', $theming->getEntity());
 $template->assign('url', $theming->getBaseUrl());
 $template->assign('slogan', $theming->getSlogan());
 $template->assign('color', $theming->getMailHeaderColor());
+$template->assign('logo', $theming->getLogo());
+$template->assign('logoMime', $config->getAppValue('theming', 'logoMime', ''));
+$template->assign('background', $theming->getBackground());
+$template->assign('backgroundMime', $config->getAppValue('theming', 'backgroundMime', ''));
 $path = $urlGenerator->linkToRoute('theming.Theming.updateLogo');
 $template->assign('uploadLogoRoute', $path);
 
