@@ -27,6 +27,7 @@ use OCA\Theming\Template;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
+use OCP\Files\IRootFolder;
 use Test\TestCase;
 
 class TemplateTest extends TestCase {
@@ -40,11 +41,14 @@ class TemplateTest extends TestCase {
 	private $defaults;
 	/** @var Template */
 	private $template;
+	/** @var IRootFolder */
+	private $rootFolder;
 
 	public function setUp() {
 		$this->config = $this->getMock('\\OCP\\IConfig');
 		$this->l10n = $this->getMock('\\OCP\\IL10N');
 		$this->urlGenerator = $this->getMock('\\OCP\\IURLGenerator');
+		$this->rootFolder = $this->getMock('\\OCP\\Files\\IRootFolder');
 		$this->defaults = $this->getMockBuilder('\\OC_Defaults')
 			->disableOriginalConstructor()
 			->getMock();
@@ -68,7 +72,8 @@ class TemplateTest extends TestCase {
 			$this->config,
 			$this->l10n,
 			$this->urlGenerator,
-			$this->defaults
+			$this->defaults,
+			$this->rootFolder
 		);
 
 		return parent::setUp();
